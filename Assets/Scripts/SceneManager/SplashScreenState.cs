@@ -8,7 +8,15 @@ public class SplashScreenState : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
-	void Init () {
+	public void Init () {
 		
 	}
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void Dismiss ()
+    {
+
+    }
 }

@@ -9,4 +9,12 @@ public class StoryState : MonoBehaviour {
 	public void Init () {
 		
 	}
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void Dismiss()
+    {
+
+    }
 }

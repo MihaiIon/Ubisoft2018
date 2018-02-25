@@ -12,4 +12,12 @@ public class InGameState : MonoBehaviour {
     {
 
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void Dismiss()
+    {
+
+    }
 }

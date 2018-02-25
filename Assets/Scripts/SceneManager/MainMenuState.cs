@@ -11,4 +11,12 @@ public class MainMenuState : MonoBehaviour {
 	public void Init () {
 		
 	}
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void Dismiss()
+    {
+
+    }
 }

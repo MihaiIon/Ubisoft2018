@@ -11,5 +11,13 @@ public class ConnectPlayersState : MonoBehaviour {
 	public void Init ()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("OtherSceneName", LoadSceneMode.Additive);
-    } 
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void Dismiss()
+    {
+
+    }
 }
