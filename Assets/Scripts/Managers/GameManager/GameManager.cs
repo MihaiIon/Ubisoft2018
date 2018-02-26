@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour {
     }
 
     [SerializeField]
-    public State currState;
+    public State currentState;
 
     [SerializeField]
     public bool allowPlayerInputs;
@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour {
     /// </summary>
 	void Awake () {
         LoadControllers();
-        SetState(State.INITIALIZING);
         SetAllowPlayerInputs(false);
+        SetState(State.INITIALIZING);
     }
 
     /// <summary>
@@ -59,9 +59,13 @@ public class GameManager : MonoBehaviour {
     /// Set the current state of the GameManager
     /// </summary>
     /// <param name="s"></param>
-	public void SetState (State s)
+	public void SetState (State state)
     {
-        switch (s)
+        // Set current State
+        currentState = state;
+
+        // Execute related scripts.
+        switch (state)
         {
             case State.INITIALIZING:
                 introController.ConnectPlayers();
@@ -76,30 +80,34 @@ public class GameManager : MonoBehaviour {
                 storyController.Init();
                 break;
             case State.GAME_FADE_IN:
-                SetAllowPlayerInputs(false);
+                // SetAllowPlayerInputs(false);
                 inGameController.Init();
                 break;
             case State.IN_GAME:
-                SetAllowPlayerInputs(true);
+                // SetAllowPlayerInputs(true);
                 // TODO.
                 break;
             case State.GAME_PAUSE:
                 // TODO.
                 break;
             case State.GAME_OVER:
-                SetAllowPlayerInputs(false);
+                // SetAllowPlayerInputs(false);
                 // TODO.
                 break;
             case State.GAME_WON:
-                SetAllowPlayerInputs(false);
+                // SetAllowPlayerInputs(false);
                 // TODO.
                 break;
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public GameManager.State GetState()
     {
-        return currState;
+        return currentState;
     }
 
     /// <summary>
