@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 14
-  productGUID: 782a40fe2af739b43b08af4819d8ec52
+  productGUID: c56700d6bf8d9224183370dd56641969
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   defaultScreenOrientation: 4
@@ -12,7 +12,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Ubisoft2018
+  productName: navMesh2
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -557,14 +557,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Ubisoft2018
+  metroPackageName: navMesh2
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Ubisoft2018
+  metroApplicationDescription: navMesh2
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -632,9 +632,9 @@ PlayerSettings:
   cloudServicesEnabled: {}
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 9af38541-2b7e-42c5-a79b-f20056c27283
-  projectName: Ubisoft2018
-  organizationId: artistless
+  cloudProjectId: 1d6ff201-536d-4f53-8c77-49c9dbc22387
+  projectName: navMesh2
+  organizationId: deladurf
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
