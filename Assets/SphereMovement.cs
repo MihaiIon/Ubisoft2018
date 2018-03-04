@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class sphereMovement : MonoBehaviour {
+public class SphereMovement : MonoBehaviour {
     private Rigidbody rb;
     private Vector3 vitesse;
     public float x, z;

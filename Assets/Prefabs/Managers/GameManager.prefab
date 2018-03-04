@@ -116,5 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586997555d4956f41b31826b5e699710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currState: 0
+  shadowPrefab: {fileID: 1849084608359368, guid: a618064848ecd90409996fba807b312f,
+    type: 2}
+  player: {fileID: 1641520098997092, guid: 590c767684399f94aaad6dd67463ab03, type: 2}
+  shadowCount: 5
+  currentState: 0
   allowPlayerInputs: 0

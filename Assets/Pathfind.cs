@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Pathfind : MonoBehaviour {
-
-    // private GameObjet go;
-
-    public Transform goal;
+    
     private UnityEngine.AI.NavMeshAgent agent;
+    private GameObject goal;
 
     // Use this for initialization
     void Start () {
-
-        // this.goal = goal;
-        // agent = go.AddComponent<UnityEngine.AI.NavMeshAgent>();
-
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        agent.destination = goal.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        agent.destination = goal.position;
+        agent.destination = goal.transform.position;
 	}
+
+    public void SetGoal (GameObject goal)
+    {
+        this.goal = goal;
+    }
 }

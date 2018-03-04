@@ -5,7 +5,10 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - shadowPrefab: {fileID: 1849084608359368, guid: a618064848ecd90409996fba807b312f,
+      type: 2}
+  - player: {fileID: 1641520098997092, guid: 590c767684399f94aaad6dd67463ab03, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

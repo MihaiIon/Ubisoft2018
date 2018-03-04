@@ -51,3 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c8b803765f48b41b104c8e0384a99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shadowPrefab: {fileID: 1849084608359368, guid: a618064848ecd90409996fba807b312f,
+    type: 2}
+  player: {fileID: 0}
+  shadowCount: 5
