@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     private MainMenuController mainMenuController;
     private StoryController storyController;
     private InGameController inGameController;
+    private EnemySpawnController enemySpawnController;
     private TextoController textoController;
 
     // All the possible states
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour {
         mainMenuController = GetComponent<MainMenuController>();
         storyController = GetComponent<StoryController>();
         inGameController = GetComponent<InGameController>();
+        enemySpawnController = GetComponent<EnemySpawnController>();
         textoController = GetComponent<TextoController>();
     }
 

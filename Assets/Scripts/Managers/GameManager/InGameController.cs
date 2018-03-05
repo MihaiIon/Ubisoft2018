@@ -5,13 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class InGameController : MonoBehaviour {
 
-    // GameManager reference
+    // Manager references
     private GameManager gameManager;
     public InGameManager inGameManager;
+
+    // Controller references
+    private EnemySpawnController enemySpawnController;
+
+    // Variables
+    private GameObject player;
+    private GameObject[] shadows;
 
     private void Awake()
     {
         gameManager = GetComponent<GameManager>();
+        enemySpawnController = GetComponent<EnemySpawnController>();
     }
 
     /// <summary>
@@ -19,7 +27,8 @@ public class InGameController : MonoBehaviour {
     /// </summary>
 	public void Init ()
     {
-        
+        player = inGameManager.Init();
+        shadows = enemySpawnController.SpawnEnemies(player.transform);
     }
 
 
