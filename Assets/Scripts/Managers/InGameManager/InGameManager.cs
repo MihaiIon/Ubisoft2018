@@ -13,12 +13,18 @@ public class InGameManager : MonoBehaviour {
 
     private void Start()
     {
-        player = Instantiate(playerPrefab, new Vector3(-20, 1, -20), Quaternion.identity) as GameObject;
+        player = Instantiate(playerPrefab, new Vector3(0, 1, 0), Quaternion.identity) as GameObject;
 
         shadows = new GameObject[shadowCount];
         for (int i = 0; i < shadowCount; i++)
         {
-            shadows[i] = Instantiate(shadowPrefab, new Vector3(5 * i, 1, 5 * i), Quaternion.identity) as GameObject;
+            float radius = Random.Range(8, 15);
+            float angle = Random.Range(0, 2 * Mathf.PI);
+
+            float x = player.transform.position.x + radius * Mathf.Cos(angle);
+            float z = player.transform.position.z + radius * Mathf.Sin(angle);
+
+            shadows[i] = Instantiate(shadowPrefab, new Vector3(x, 1, z), Quaternion.identity) as GameObject;
             shadows[i].GetComponent<Pathfind>().SetGoal(player.transform);
         }
     }
