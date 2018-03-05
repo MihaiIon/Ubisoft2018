@@ -11,7 +11,8 @@ public class SphereMovement : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody>();
         vitesse = new Vector3(x, 0, z);
-	}
+        rb.AddForce(10 * vitesse);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,6 +21,6 @@ public class SphereMovement : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        rb.AddForce(vitesse);
+
     }
 }

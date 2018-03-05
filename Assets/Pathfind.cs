@@ -5,7 +5,8 @@ using UnityEngine;
 public class Pathfind : MonoBehaviour {
     
     private UnityEngine.AI.NavMeshAgent agent;
-    private GameObject goal;
+
+    public Transform goal;
 
     // Use this for initialization
     void Start () {
@@ -14,10 +15,10 @@ public class Pathfind : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        agent.destination = goal.transform.position;
+        agent.destination = goal.position;
 	}
 
-    public void SetGoal (GameObject goal)
+    public void SetGoal (Transform goal)
     {
         this.goal = goal;
     }

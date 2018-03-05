@@ -12,7 +12,6 @@ public class InGameController : MonoBehaviour {
     private void Awake()
     {
         gameManager = GetComponent<GameManager>();
-        Instantiate(inGameManager);
     }
 
     /// <summary>
@@ -20,7 +19,7 @@ public class InGameController : MonoBehaviour {
     /// </summary>
 	public void Init ()
     {
-
+        
     }
 
 

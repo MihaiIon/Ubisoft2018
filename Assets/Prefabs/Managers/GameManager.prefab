@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1252336308713486}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -15.642876, y: 0, z: -30.536781}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,7 +56,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa8cdb63505d6b46bcb8bbfd39117a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inGameManager: {fileID: 0}
+  inGameManager: {fileID: 114169824614978906, guid: a109ba173f99477459cd3660f57165c2,
+    type: 2}
 --- !u!114 &114598574238150814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,7 +69,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7fa8c625618b447a74a6a1daa80800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyManager: {fileID: 0}
+  storyManager: {fileID: 114173064411425782, guid: a406b6fd8de72e9469f4ffe8b9103d65,
+    type: 2}
 --- !u!114 &114682687288178700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,7 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4558d23075201b45849698c644477a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introManager: {fileID: 0}
+  introManager: {fileID: 114592053877476282, guid: 768f8e81801bf954da05635c3cd6b6ae,
+    type: 2}
 --- !u!114 &114787307040721060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,7 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c680260e676714abb9533cf9f409d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textoManager: {fileID: 0}
+  textoManager: {fileID: 114253992836088590, guid: 5b0c0d9cddb9f2c4bb86ade21b99ef98,
+    type: 2}
 --- !u!114 &114849923956572336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,7 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e29dc078852a14283b807b2ccf7708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuManager: {fileID: 0}
+  mainMenuManager: {fileID: 114797580471112842, guid: 9b65b767bc01ca04b969c11b01d0e61b,
+    type: 2}
 --- !u!114 &114975949027161794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,9 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586997555d4956f41b31826b5e699710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowPrefab: {fileID: 1849084608359368, guid: a618064848ecd90409996fba807b312f,
-    type: 2}
-  player: {fileID: 1641520098997092, guid: 590c767684399f94aaad6dd67463ab03, type: 2}
-  shadowCount: 5
-  currentState: 0
+  currentState: 4
   allowPlayerInputs: 0

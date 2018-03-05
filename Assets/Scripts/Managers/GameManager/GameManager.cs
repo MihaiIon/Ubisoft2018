@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
 	void Awake () {
         LoadControllers();
         SetAllowPlayerInputs(false);
-        SetState(State.INITIALIZING);
+        SetState(State.GAME_FADE_IN);
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour {
     {
         // Set current State
         currentState = state;
-
+        
         // Execute related scripts.
         switch (state)
         {
