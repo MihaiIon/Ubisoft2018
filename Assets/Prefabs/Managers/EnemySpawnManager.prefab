@@ -53,4 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shadowPrefab: {fileID: 1849084608359368, guid: a618064848ecd90409996fba807b312f,
     type: 2}
-  currentDif: 0
+  difficultyLevel: 3
+  minRadiusDecay: 0.75
+  maxRadiusDecay: 0.75
+  minRadius: 8
+  maxRadius: 14
