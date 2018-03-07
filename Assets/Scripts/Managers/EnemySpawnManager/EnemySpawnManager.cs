@@ -53,7 +53,7 @@ public class EnemySpawnManager : MonoBehaviour {
         float minSpawnRadius = minRadius - difficultyValue * minRadiusDecay;
         float maxSpawnRadius = maxRadius - difficultyValue * maxRadiusDecay;
         float spawnDirection = Random.Range(0, 2 * Mathf.PI);
-        float spawnSpread = (difficultyValue / (int)Difficulty.GOD) * Mathf.PI;
+        float spawnSpread = (difficultyValue / (float)Difficulty.GOD) * Mathf.PI;
 
         GameObject[] shadows = new GameObject[enemyCount];
 
