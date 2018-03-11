@@ -15,14 +15,15 @@ public class StoryController : MonoBehaviour {
     }
 
     // Use this for initialization
-    public void Init () {
+    public void Init ()
+    {
 		
 	}
 
     /// <summary>
     /// 
     /// </summary>
-    public void Dismiss()
+    public void LaunchStory ()
     {
 
     }

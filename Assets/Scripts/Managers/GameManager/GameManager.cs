@@ -6,8 +6,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     // Scripts
-    private IntroController introController;
-    private MainMenuController mainMenuController;
     private StoryController storyController;
     private InGameController inGameController;
     private TextoController textoController;
@@ -16,8 +14,6 @@ public class GameManager : MonoBehaviour {
     public enum State
     {
         INITIALIZING,
-        SPLASH_SCREENS,
-        MAIN_MENU,
         STORY,
         GAME_FADE_IN,
         IN_GAME,
@@ -48,8 +44,6 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     void LoadControllers()
     {
-        introController = GetComponent<IntroController>();
-        mainMenuController = GetComponent<MainMenuController>();
         storyController = GetComponent<StoryController>();
         inGameController = GetComponent<InGameController>();
         textoController = GetComponent<TextoController>();
@@ -68,16 +62,10 @@ public class GameManager : MonoBehaviour {
         switch (state)
         {
             case State.INITIALIZING:
-                introController.ConnectPlayers();
-                break;
-            case State.SPLASH_SCREENS:
-                introController.DisplaySplashScreens();
-                break;
-            case State.MAIN_MENU:
-                mainMenuController.Init();
+                storyController.Init();
                 break;
             case State.STORY:
-                storyController.Init();
+                storyController.LaunchStory();
                 break;
             case State.GAME_FADE_IN:
                 // SetAllowPlayerInputs(false);
