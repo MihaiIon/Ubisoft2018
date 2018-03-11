@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class InGameManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public GameObject playerPrefab;
+
+    private GameObject player;
+
+    void Start()
+    {
+
+    }
+
+    public GameObject Init ()
+    {
+        player = Instantiate(playerPrefab, new Vector3(0, 1, 0), Quaternion.identity) as GameObject;
+        return player;
+    }
 	
 	// Update is called once per frame
 	void Update () {

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     // Scripts
     private StoryController storyController;
     private InGameController inGameController;
+    private EnemySpawnController enemySpawnController;
     private TextoController textoController;
 
     // All the possible states
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour {
 	void Awake () {
         LoadControllers();
         SetAllowPlayerInputs(false);
-        SetState(State.INITIALIZING);
+        SetState(State.GAME_FADE_IN);
     }
 
     /// <summary>
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour {
     {
         storyController = GetComponent<StoryController>();
         inGameController = GetComponent<InGameController>();
+        enemySpawnController = GetComponent<EnemySpawnController>();
         textoController = GetComponent<TextoController>();
     }
 
@@ -57,7 +59,7 @@ public class GameManager : MonoBehaviour {
     {
         // Set current State
         currentState = state;
-
+        
         // Execute related scripts.
         switch (state)
         {
