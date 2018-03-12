@@ -15,7 +15,7 @@ public class InGameManager : MonoBehaviour {
 
     public GameObject Init ()
     {
-        player = Instantiate(playerPrefab, new Vector3(0, 1, 0), Quaternion.identity) as GameObject;
+        player = Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         return player;
     }
 	
