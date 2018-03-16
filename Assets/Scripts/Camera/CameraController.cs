@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour {
 
 		player = GameObject.FindGameObjectWithTag ("Player1");
 
-		Debug.Log (player.name);
+		Debug.Log ("Camera Attached to : " + player.name);
 		offset = transform.position - player.transform.position;
 	}
 	

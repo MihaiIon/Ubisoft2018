@@ -10,6 +10,11 @@ namespace UnityStandardAssets.Characters
 
 	public class EnemyCharacter : MonoBehaviour {
 
+		[Header("Enemy Stats")]
+		[SerializeField] float life = 100;
+		[SerializeField] float attackRange = 2f;
+
+		[Header("Movement")]
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
 		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
@@ -42,7 +47,20 @@ namespace UnityStandardAssets.Characters
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 		}
 
-		public void Move(Vector3 move, bool stun, bool attack, bool die)
+		public void GetHit () {
+
+			if (m_Stun){
+				Die ();
+			}
+		}
+
+		void Die(){
+
+			m_Die = true;
+			// TODO enemy disapear
+		}
+
+		public void Move(Vector3 move, bool attack)
 		{
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired
@@ -54,9 +72,13 @@ namespace UnityStandardAssets.Characters
 			m_TurnAmount = Mathf.Atan2(move.x, move.z);
 			m_ForwardAmount = move.z;
 
-			ApplyExtraTurnRotation();
+			// An enemy can't attack while he's stunned
+			if(attack && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Movement"))
+			{
+				m_Attack = true;
+			}
 
-			HandleAction(stun, attack, die);
+			ApplyExtraTurnRotation();
 
 			//Adjust Capsule Collider Height and Center in function of the animator paramater
 			m_Capsule.height = m_CapsuleHeight * m_Animator.GetFloat ("ColliderHeight");
@@ -86,23 +108,6 @@ namespace UnityStandardAssets.Characters
 			m_Animator.speed = m_AnimSpeedMultiplier;
 		}
 
-
-		void HandleAction(bool stun, bool attack, bool die)
-		{
-			m_Stun = stun;
-
-			// An enemy can't attack while he's stunned
-			if(attack && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Movement"))
-			{
-				m_Attack = true;
-			}
-
-			// An enemy must be stunned before he can die
-			if(die && m_Stun)
-			{
-				m_Die = true;
-			}
-		}
 
 		void ApplyExtraTurnRotation()
 		{
