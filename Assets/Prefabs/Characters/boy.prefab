@@ -375,11 +375,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4895299780845848}
+  - component: {fileID: 114011258671267168}
   - component: {fileID: 95438635095809906}
   - component: {fileID: 54929080528488178}
   - component: {fileID: 136035460413239742}
   - component: {fileID: 114607010595638122}
-  - component: {fileID: 114011258671267168}
   - component: {fileID: 23567130017957236}
   m_Layer: 0
   m_Name: boy
@@ -1492,6 +1492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 100
+  attackRange: 2
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 360
   m_RunCycleLegOffset: 0.2

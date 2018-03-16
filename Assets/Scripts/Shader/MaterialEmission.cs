@@ -22,7 +22,7 @@ public class MaterialEmission : MonoBehaviour {
 		emission = 0f;
 
 		_propBlock = new MaterialPropertyBlock ();
-		_renderer = GetComponent<Renderer> ();
+		_renderer = GetComponentInChildren<Renderer> ();
 
 		// Checks it the material on the object uses the Custom/shadow_SurfaceShader
 		// Logs Error if not
