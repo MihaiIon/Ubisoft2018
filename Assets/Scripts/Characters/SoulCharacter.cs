@@ -55,7 +55,14 @@ namespace UnityStandardAssets.Characters.Soul
 
 
 		// Called by the User Control Script
-		public void Move (Vector3 move, Vector3 orient, bool dodge, bool shoot) {
+		[Command]
+		public void CmdMoveSoul (Vector3 move, Vector3 orient, bool dodge, bool shoot)
+		{
+			RpcMoveSoul (move, orient, dodge, shoot);
+		}
+		
+		[ClientRpc]
+		public void RpcMoveSoul (Vector3 move, Vector3 orient, bool dodge, bool shoot) {
 
 			// Move the character
 			// If the magnitude of the movement is too small

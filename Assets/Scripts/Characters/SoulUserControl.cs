@@ -84,7 +84,7 @@ namespace UnityStandardAssets.Characters.Soul
 				m_Move = v1*Vector3.forward + h1*Vector3.right;
 			}
 
-			m_Character.Move (m_Move, m_Orient, m_Dodge, m_Shoot);
+			m_Character.CmdMoveSoul (m_Move, m_Orient, m_Dodge, m_Shoot);
 
 			// Reset Triggers
 			m_Dodge = false;

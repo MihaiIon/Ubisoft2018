@@ -114,8 +114,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         // Function to animate the character
         // Called by the User Control Script
-        [Command]
-        public void CmdMove(Vector3 move, bool dodge, bool attack)
+		[ClientRpc]
+        public void RpcMove(Vector3 move, bool dodge, bool attack)
 		{
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired
