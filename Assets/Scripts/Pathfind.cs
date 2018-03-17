@@ -15,7 +15,8 @@ public class Pathfind : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        agent.destination = goal.position;
+        //agent.destination = goal.position;
+        Debug.Log(agent.nextPosition);
 	}
 
     public void SetGoal (Transform goal)
