@@ -71,13 +71,14 @@ GameObject:
   - component: {fileID: 136238338314170690}
   - component: {fileID: 114313521623241496}
   - component: {fileID: 114079141701558054}
+  - component: {fileID: 114078420009249598}
   m_Layer: 0
   m_Name: Soul
-  m_TagString: Player1
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4442970963430972
 Transform:
   m_ObjectHideFlags: 1
@@ -220,6 +221,38 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114078420009249598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1903543918017744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 81
+    i1: 199
+    i2: 125
+    i3: 102
+    i4: 42
+    i5: 10
+    i6: 109
+    i7: 164
+    i8: 107
+    i9: 176
+    i10: 77
+    i11: 243
+    i12: 58
+    i13: 0
+    i14: 77
+    i15: 163
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114079141701558054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b56aa4c78bd9b4d974f5c6edf01b01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootRange: 20
+  shootRange: 40
   shootDamage: 20
   speedMultiplier: 6
   decelerationMultiplier: 2

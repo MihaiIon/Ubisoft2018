@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 136035460413239742}
   - component: {fileID: 114607010595638122}
   - component: {fileID: 23567130017957236}
+  - component: {fileID: 114254693064457024}
   m_Layer: 0
   m_Name: boy
   m_TagString: Player1
@@ -1501,6 +1502,38 @@ MonoBehaviour:
   m_DodgeSpeedMultiplier: 2.7
   m_AnimSpeedMultiplier: 1
   length: 2
+--- !u!114 &114254693064457024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1540331512595602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 133
+    i1: 112
+    i2: 128
+    i3: 102
+    i4: 168
+    i5: 100
+    i6: 201
+    i7: 52
+    i8: 26
+    i9: 4
+    i10: 242
+    i11: 188
+    i12: 199
+    i13: 24
+    i14: 22
+    i15: 103
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114607010595638122
 MonoBehaviour:
   m_ObjectHideFlags: 1

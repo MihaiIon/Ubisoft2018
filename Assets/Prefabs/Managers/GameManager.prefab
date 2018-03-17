@@ -19,13 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4575253584343566}
-  - component: {fileID: 114975949027161794}
-  - component: {fileID: 114682687288178700}
-  - component: {fileID: 114849923956572336}
-  - component: {fileID: 114598574238150814}
-  - component: {fileID: 114105666045246366}
-  - component: {fileID: 114787307040721060}
-  - component: {fileID: 114639615438434458}
+  - component: {fileID: 114522347310406604}
+  - component: {fileID: 114147383298175814}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114105666045246366
+--- !u!114 &114147383298175814
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -54,12 +49,83 @@ MonoBehaviour:
   m_GameObject: {fileID: 1252336308713486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faa8cdb63505d6b46bcb8bbfd39117a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 433172b5b2410254b8e269867677eeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inGameManager: {fileID: 114426420570155744, guid: a109ba173f99477459cd3660f57165c2,
+  m_NetworkPort: 7777
+  m_ServerBindToIP: 0
+  m_ServerBindAddress: 
+  m_NetworkAddress: localhost
+  m_DontDestroyOnLoad: 1
+  m_RunInBackground: 1
+  m_ScriptCRCCheck: 1
+  m_MaxDelay: 0.01
+  m_LogLevel: 2
+  m_PlayerPrefab: {fileID: 1983653128821100, guid: 7fdb129c053fdb24b89900ebb772f45d,
     type: 2}
---- !u!114 &114598574238150814
+  m_AutoCreatePlayer: 0
+  m_PlayerSpawnMethod: 0
+  m_OfflineScene: 
+  m_OnlineScene: 
+  m_SpawnPrefabs:
+  - {fileID: 1540331512595602, guid: 85708066a864c9341a04f2bcc7181667, type: 2}
+  - {fileID: 1903543918017744, guid: 51c77d662a0a6da46bb04df33a004da3, type: 2}
+  m_CustomConfig: 0
+  m_MaxConnections: 4
+  m_ConnectionConfig:
+    m_PacketSize: 1440
+    m_FragmentSize: 500
+    m_ResendTimeout: 1200
+    m_DisconnectTimeout: 2000
+    m_ConnectTimeout: 2000
+    m_MinUpdateTimeout: 10
+    m_PingTimeout: 500
+    m_ReducedPingTimeout: 100
+    m_AllCostTimeout: 20
+    m_NetworkDropThreshold: 5
+    m_OverflowDropThreshold: 5
+    m_MaxConnectionAttempt: 10
+    m_AckDelay: 33
+    m_SendDelay: 10
+    m_MaxCombinedReliableMessageSize: 100
+    m_MaxCombinedReliableMessageCount: 10
+    m_MaxSentMessageQueueSize: 512
+    m_AcksType: 1
+    m_UsePlatformSpecificProtocols: 0
+    m_InitialBandwidth: 0
+    m_BandwidthPeakFactor: 2
+    m_WebSocketReceiveBufferMaxSize: 0
+    m_UdpSocketReceiveBufferMaxSize: 0
+    m_SSLCertFilePath: 
+    m_SSLPrivateKeyFilePath: 
+    m_SSLCAFilePath: 
+    m_Channels: []
+  m_GlobalConfig:
+    m_ThreadAwakeTimeout: 1
+    m_ReactorModel: 0
+    m_ReactorMaximumReceivedMessages: 1024
+    m_ReactorMaximumSentMessages: 1024
+    m_MaxPacketSize: 2000
+    m_MaxHosts: 16
+    m_ThreadPoolSize: 1
+    m_MinTimerTimeout: 1
+    m_MaxTimerTimeout: 12000
+    m_MinNetSimulatorTimeout: 1
+    m_MaxNetSimulatorTimeout: 12000
+  m_Channels: 
+  m_UseWebSockets: 0
+  m_UseSimulator: 0
+  m_SimulatedLatency: 1
+  m_PacketLossPercentage: 0
+  m_MaxBufferedPackets: 16
+  m_AllowFragmentation: 1
+  m_MatchHost: mm.unet.unity3d.com
+  m_MatchPort: 443
+  matchName: default
+  matchSize: 4
+  isNetworkActive: 0
+  matchMaker: {fileID: 0}
+--- !u!114 &114522347310406604
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -67,73 +133,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1252336308713486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b7fa8c625618b447a74a6a1daa80800, type: 3}
+  m_Script: {fileID: 227461547, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyManager: {fileID: 114173064411425782, guid: a406b6fd8de72e9469f4ffe8b9103d65,
-    type: 2}
---- !u!114 &114639615438434458
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1252336308713486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fbefefad8f181240ac4e7b786813243, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemySpawnManager: {fileID: 114486109412257174, guid: 6bde3f15f8b2ec54e973f100a94eea91,
-    type: 2}
---- !u!114 &114682687288178700
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1252336308713486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4558d23075201b45849698c644477a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  introManager: {fileID: 114592053877476282, guid: 768f8e81801bf954da05635c3cd6b6ae,
-    type: 2}
---- !u!114 &114787307040721060
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1252336308713486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6c680260e676714abb9533cf9f409d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textoManager: {fileID: 114253992836088590, guid: 5b0c0d9cddb9f2c4bb86ade21b99ef98,
-    type: 2}
---- !u!114 &114849923956572336
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1252336308713486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16e29dc078852a14283b807b2ccf7708, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenuManager: {fileID: 114797580471112842, guid: 9b65b767bc01ca04b969c11b01d0e61b,
-    type: 2}
---- !u!114 &114975949027161794
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1252336308713486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 586997555d4956f41b31826b5e699710, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 4
-  allowPlayerInputs: 0
+  manager: {fileID: 0}
+  showGUI: 1
+  offsetX: 0
+  offsetY: 0

@@ -15,11 +15,7 @@ public class CameraController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-		player = GameObject.FindGameObjectWithTag ("Player1");
-
-		Debug.Log ("Camera Attached to : " + player.name);
-		offset = transform.position - player.transform.position;
+        enabled = false;
 	}
 	
 	// Update is called once per frame
