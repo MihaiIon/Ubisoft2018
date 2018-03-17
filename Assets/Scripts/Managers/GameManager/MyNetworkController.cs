@@ -30,6 +30,7 @@ public class MyNetworkController : NetworkManager
                 new Vector3(0, 20f, 0),
                 Quaternion.identity
             );
+            
             NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
         }
 

@@ -1,11 +1,12 @@
 ﻿using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.Networking;
 
 namespace UnityStandardAssets.Characters.Soul
 {
 	[RequireComponent(typeof (SoulCharacter))]
-	public class SoulUserControl : MonoBehaviour {
+	public class SoulUserControl : NetworkBehaviour {
 
 		private SoulCharacter m_Character;	// A reference to the Soul on the object
 		private Transform m_Cam;			// A reference to the main camera in the scenes transform
@@ -35,6 +36,8 @@ namespace UnityStandardAssets.Characters.Soul
 
 		// Update is called once per frame
 		private void Update () {
+            if (isServer)
+                return;
 
 			if (!m_Dodge)
 				m_Dodge = CrossPlatformInputManager.GetButtonDown("Dodge");
@@ -44,10 +47,13 @@ namespace UnityStandardAssets.Characters.Soul
 		}
 
 		private void FixedUpdate()
-		{
-			// read inputs
-			// for position (left joystick)
-			float h1 = CrossPlatformInputManager.GetAxis("Horizontal1");
+        {
+            if (isServer)
+                return;
+
+            // read inputs
+            // for position (left joystick)
+            float h1 = CrossPlatformInputManager.GetAxis("Horizontal1");
 			float v1 = CrossPlatformInputManager.GetAxis("Vertical1");
 
 			// for orientation (right joystick)

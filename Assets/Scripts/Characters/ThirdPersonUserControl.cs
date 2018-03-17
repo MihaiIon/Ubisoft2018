@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.Networking;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
     [RequireComponent(typeof (ThirdPersonCharacter))]
-    public class ThirdPersonUserControl : MonoBehaviour
+    public class ThirdPersonUserControl : NetworkBehaviour
     {
         private ThirdPersonCharacter m_Character; 	// A reference to the ThirdPersonCharacter on the object
         private Transform m_Cam;                  	// A reference to the main camera in the scenes transform
@@ -37,6 +38,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void Update()
         {
+            if (!isServer)
+                return;
+
 			if (!m_Dodge)
 				m_Dodge = CrossPlatformInputManager.GetButtonDown("Dodge");
 
@@ -50,9 +54,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         // Fixed update is called in sync with physics
         private void FixedUpdate()
-		{
-			// read inputs
-			float h = CrossPlatformInputManager.GetAxis ("Horizontal1");
+        {
+            if (!isServer)
+                return;
+
+            // read inputs
+            float h = CrossPlatformInputManager.GetAxis ("Horizontal1");
 			float v = CrossPlatformInputManager.GetAxis ("Vertical1");
 
 			// calculate move direction to pass to character
