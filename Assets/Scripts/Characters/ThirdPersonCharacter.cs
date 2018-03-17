@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -56,6 +57,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		// Funtion that launches an attack
 		// Called by an event in the Animator to match the animation
+        [Command]
 		void Attack (){
 
 			// Cast a ray in front of the boy
@@ -84,9 +86,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 		}
 
-		// Funtion called 
-		// Called by an enemy that hits us
-		public void GetHit (int damage) {
+        // Funtion called 
+        // Called by an enemy that hits us
+        [Command]
+        public void GetHit (int damage) {
 
 			// Lose life
 			life -= damage;
@@ -102,18 +105,20 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_GetHit = true;
 		}
 
-		// When the player Die
-		// Plays the animation
-		// Triggers the game over
-		void Die(){
+        // When the player Die
+        // Plays the animation
+        // Triggers the game over
+        [Command]
+        void Die(){
 
 			m_Animator.SetBool ("Dead", true);
 			// TODO Game Over
 		}
 
-		// Function to animate the character
-		// Called by the User Control Script
-		public void Move(Vector3 move, bool dodge, bool attack)
+        // Function to animate the character
+        // Called by the User Control Script
+        [Command]
+        public void Move(Vector3 move, bool dodge, bool attack)
 		{
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired
