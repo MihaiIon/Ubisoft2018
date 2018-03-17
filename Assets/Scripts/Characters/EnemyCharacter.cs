@@ -15,9 +15,11 @@ namespace UnityStandardAssets.Characters
 	public class EnemyCharacter : MonoBehaviour {
 
 		[Header("Enemy Stats")]
-		[SerializeField] float life = 100;
+		public float maxLife = 100;
 		[SerializeField] float attackRange = 2f;
 		[SerializeField] int attackDamage = 20;
+		[SerializeField] float regenerateMultiplier = 10f;
+		public float distanceThreshold = 10f;
 
 		[Header("Movement")]
 		[SerializeField] float m_MovingTurnSpeed = 360;
@@ -26,18 +28,26 @@ namespace UnityStandardAssets.Characters
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 
+		[System.NonSerialized] public float life;	// Current life of the enemy
+		[System.NonSerialized] public bool isShot;	// If the enemy is shot
+
+		// To access different component attached to this obejct
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
 		CapsuleCollider m_Capsule;
 		MaterialEmission m_MaterialEmission;
 		NavMeshAgent agent;
 
+		// Movement parameters
 		float m_TurnAmount;
 		float m_ForwardAmount;
 		Vector3 m_move;
 		Vector3 m_GroundNormal;
+
 		float m_CapsuleHeight;
 		Vector3 m_CapsuleCenter;
+
+		// Actions
 		bool m_Stun;
 		bool m_Attack;
 		bool m_Die;
@@ -45,6 +55,7 @@ namespace UnityStandardAssets.Characters
 
 		void Start()
 		{
+			// Initialize from component attached to the object
 			m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
 			m_Capsule = GetComponent<CapsuleCollider>();
@@ -55,29 +66,36 @@ namespace UnityStandardAssets.Characters
 
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
+			// Initialization of the attributs
+			life = maxLife;
+			isShot = false;
+
 			// Prevents the agent from updtating the position automatically
 			agent.updatePosition = false;
 			agent.updateRotation = false;
 		}
 
 
-		// Used to manage when 
+		// When Hit by the player Kid
 		public void GetHit ()
 		{
-
 			if (m_Stun){
 				Die ();
 			}
 		}
 
+		// When shot by the player Soul
 		public void Shot(float damage)
 		{
-			life -= damage;
+			Debug.Log (life);
+			life = Mathf.Max (life - damage * Time.deltaTime, 0f);
+			isShot = true;
 		}
 
-		public void GetStunned()
+		public void RegainLife ()
 		{
-			m_Stun = true;
+			Debug.Log ("life regain : " + life);
+			life = Mathf.Min (maxLife, life + Time.deltaTime * regenerateMultiplier);
 		}
 
 		void Die()
@@ -118,6 +136,30 @@ namespace UnityStandardAssets.Characters
 			}
 		}
 
+
+		public bool CheckIfTargetInReach()
+		{
+
+			// Cast a ray in front of the enemy
+			Ray ray = new Ray(transform.position + Vector3.up, transform.forward);
+			RaycastHit hit;
+			Debug.DrawRay(ray.origin, ray.direction * attackRange, Color.green, Time.fixedDeltaTime);
+			bool isThereAhit = Physics.Raycast(ray, out hit, attackRange);
+
+			if(isThereAhit)
+			{
+				// If what we hit is an enemy
+				if (hit.transform.gameObject.layer == 8) {
+					// Warns the enemy it got hit
+					Debug.Log ("Boy in reach!");
+				}
+					return true;
+			}
+			return false;
+		}
+
+
+
 		public void Move(Vector3 move, bool attack)
 		{
 			// convert the world relative moveInput vector into a local-relative
@@ -146,6 +188,7 @@ namespace UnityStandardAssets.Characters
 			UpdateAnimator(move);
 		}
 
+
 		void UpdateAnimator(Vector3 move)
 		{
 			// update the animator parameters
@@ -163,7 +206,8 @@ namespace UnityStandardAssets.Characters
 
 			// the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,
 			// which affects the movement speed because of the root motion.
-			m_Animator.speed = m_AnimSpeedMultiplier;
+			float slow = isShot? 0.3f : 1f;
+			m_Animator.speed = m_AnimSpeedMultiplier * slow;
 		}
 
 
@@ -182,8 +226,7 @@ namespace UnityStandardAssets.Characters
 			if (Time.deltaTime > 0)
 			{
 				// Choose between Speed Modifier use, regular movement or dodge. Allows to control each independently.
-				float speedMultiplier = m_MoveSpeedMultiplier;
-				Vector3 v = (m_Animator.deltaPosition * speedMultiplier) / Time.deltaTime;
+				Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
 
 				// we preserve the existing y part of the current velocity.
 				v.y = m_Rigidbody.velocity.y;
