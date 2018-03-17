@@ -7,6 +7,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	[RequireComponent(typeof(Animator))]
 	public class ThirdPersonCharacter : MonoBehaviour
 	{
+		[Header("Player Stats")]
+		[SerializeField] int life = 100;
+		[SerializeField] float attackRange = 2f;
+
+		[Header("Movement")]
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
 		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
@@ -44,7 +49,70 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 										RigidbodyConstraints.FreezePositionY;
 		}
 
+		// Use this for initialization
+		void AnswerTexto (){
+			// TODO
+		}
 
+		// Funtion that launches an attack
+		// Called by an event in the Animator to match the animation
+		void Attack (){
+
+			// Cast a ray in front of the boy
+			Ray ray = new Ray(transform.position + Vector3.up * 0.6f, transform.forward);
+			RaycastHit hit;
+			Debug.DrawRay(ray.origin, ray.direction * attackRange, Color.red, 1f);
+			bool isThereAhit = Physics.Raycast(ray, out hit, attackRange);
+
+			// If we hit something
+			if(isThereAhit){
+
+				// If what we hit is an enemy
+				if (hit.transform.gameObject.layer == 9)
+				{
+					// Warns the enemy it got hit
+					Debug.Log ("Hit Enemy!");
+					hit.transform.gameObject.GetComponent<EnemyCharacter>().GetHit();
+				}
+				else{
+					Debug.Log ("Hit Nothing!");
+				}
+			}
+			else
+			{
+				Debug.Log ("Hit Nothing!");
+			}
+		}
+
+		// Funtion called 
+		// Called by an enemy that hits us
+		public void GetHit (int damage) {
+
+			// Lose life
+			life -= damage;
+
+			// If the player has no more life, he dies
+			if (life <= 0)
+			{
+				Die ();
+				return;
+			}
+
+			// To trigger the getHit animation on the next animator update
+			m_GetHit = true;
+		}
+
+		// When the player Die
+		// Plays the animation
+		// Triggers the game over
+		void Die(){
+
+			m_Animator.SetBool ("Dead", true);
+			// TODO Game Over
+		}
+
+		// Function to animate the character
+		// Called by the User Control Script
 		public void Move(Vector3 move, bool dodge, bool attack)
 		{
 			// convert the world relative moveInput vector into a local-relative
@@ -75,8 +143,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 			UpdateAnimator (move);				
 		}
-
-
+			
 		void UpdateAnimator(Vector3 move)
 		{
 			// update the animator parameters
@@ -85,8 +152,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
 
 			// Get Hit
-			if (m_GetHit)
+			if (m_GetHit) {
 				m_Animator.SetTrigger ("GetHit");
+				m_GetHit = false;
+			}
 
 			// Dodge
 			if(m_Dodge){
@@ -110,8 +179,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			float turnSpeed = Mathf.Lerp(m_StationaryTurnSpeed, m_MovingTurnSpeed, m_ForwardAmount);
 			transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
 		}
-
-
+			
 		public void OnAnimatorMove()
 		{
 			// we implement this function to override the default root motion.
@@ -121,32 +189,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				// Choose between Speed Modifier use, regular movement or dodge. Allows to control each independently.
 				float speedMultiplier = (m_Animator.GetCurrentAnimatorStateInfo (0).IsName ("Dodge")) ? m_DodgeSpeedMultiplier : m_MoveSpeedMultiplier;
 
-				// Get the normal of the ground in front
-				Vector3 groundNormal = CheckGround ();
-
-				// Prevents the player from going uphill
-				Vector3 v = Vector3.ProjectOnPlane (m_Animator.deltaPosition, groundNormal);
+				Vector3 v = (m_Animator.deltaPosition * speedMultiplier) / Time.deltaTime;
 				v.y = 0;
-				v = (v * speedMultiplier) / Time.deltaTime;
 
 				// we preserve the existing y part of the current velocity.
 				v.y = m_Rigidbody.velocity.y;
 				m_Rigidbody.velocity = v;
 			}
-		}
-
-		// Returns the normal of the ground in front of the player
-		private Vector3 CheckGround(){
-
-			// Orientation the player is facing
-			Vector3 direction = Quaternion.Euler (transform.rotation.eulerAngles) * Vector3.forward;
-			direction = direction * length + Vector3.down * 0.5f;
-
-			RaycastHit hit;
-			Physics.Raycast (transform.position + Vector3.up * 0.3f, direction, out hit, direction.magnitude);
-			Debug.DrawRay (transform.position + Vector3.up * 0.3f, direction, Color.red, Time.deltaTime);
-
-			return hit.normal;
 		}
 	}
 }
