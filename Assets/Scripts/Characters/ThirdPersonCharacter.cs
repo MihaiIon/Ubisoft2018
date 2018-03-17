@@ -6,7 +6,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	[RequireComponent(typeof(Rigidbody))]
 	[RequireComponent(typeof(CapsuleCollider))]
 	[RequireComponent(typeof(Animator))]
-	public class ThirdPersonCharacter : MonoBehaviour
+	public class ThirdPersonCharacter : NetworkBehaviour
 	{
 		[Header("Player Stats")]
 		[SerializeField] int life = 100;
@@ -57,7 +57,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		// Funtion that launches an attack
 		// Called by an event in the Animator to match the animation
-        [Command]
 		void Attack (){
 
 			// Cast a ray in front of the boy
@@ -88,7 +87,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         // Funtion called 
         // Called by an enemy that hits us
-        [Command]
         public void GetHit (int damage) {
 
 			// Lose life
@@ -108,7 +106,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         // When the player Die
         // Plays the animation
         // Triggers the game over
-        [Command]
         void Die(){
 
 			m_Animator.SetBool ("Dead", true);
@@ -118,7 +115,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         // Function to animate the character
         // Called by the User Control Script
         [Command]
-        public void Move(Vector3 move, bool dodge, bool attack)
+        public void CmdMove(Vector3 move, bool dodge, bool attack)
 		{
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired

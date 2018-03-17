@@ -72,7 +72,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Move = v * Vector3.forward + h * Vector3.right;
 			}
 			// pass all parameters to the character control script
-			m_Character.Move (m_Move, m_Dodge, m_Attack);
+			m_Character.CmdMove(m_Move, m_Dodge, m_Attack);
 
 			// calls function for actions that don't requiere animation
 			if (m_AnswerTexto)

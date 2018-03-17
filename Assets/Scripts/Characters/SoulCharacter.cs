@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace UnityStandardAssets.Characters.Soul
 {
 	[RequireComponent(typeof(Rigidbody))]
 	[RequireComponent(typeof(CapsuleCollider))]
 
-	public class SoulCharacter : MonoBehaviour {
+	public class SoulCharacter : NetworkBehaviour
+    {
 
 
 		[Header("Player Stats")]
