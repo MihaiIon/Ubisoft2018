@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4507551321590710}
   - component: {fileID: 108393471627495350}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4442970963430972}
   - component: {fileID: 212460094439163830}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4946612660395940}
   - component: {fileID: 108657777664021434}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 114313521623241496}
   - component: {fileID: 114079141701558054}
   - component: {fileID: 114078420009249598}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Soul
   m_TagString: Player2
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ MonoBehaviour:
     i14: 77
     i15: 163
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114079141701558054
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Shadow
   - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - Boy
   - Enemy
-  - 
+  - Soul
   - 
   - 
   - 
